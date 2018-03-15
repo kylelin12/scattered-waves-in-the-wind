@@ -1,0 +1,1 @@
+var svgc = document.getElementById("scatter");
