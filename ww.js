@@ -1,9 +1,12 @@
 //var svgc = document.getElementById("scatter");
 
-var data = [[1, 0.1], [3, 0.2], [5, 0.6], 
-            [7, 1], [10, 2], [12, 3], [15, 4], 
-            [19, 5.5], [23, 7], [27, 9],
-            [31, 11.5], [35, 13.5], [39, 16]];
+var data = [[1880, -0.2], [1909, -0.47], [1930, -0.15], 
+            [1953, 0.08], [1979, 0.17], [1982, 0.13],
+            [1987, 0.33], [1992, 0.26], [2005, 0.66],
+            [2011, 0.6], [2015, 0.9], [2016, 0.94],
+            [1924, -0.28], [1968, -0.03], [1997, 0.48],
+            [1958, 0.07], [1975, -0.02], [1925, -0.15],
+            [1902, -0.25], [1882, -0.1], [1911, -0.44]];
 
 var body = d3.select("body");
 
@@ -13,8 +16,8 @@ var svg = body.append("svg")
     .style("border-style","solid")
     .style("border-width","5px");
 
-var xPlace = d3.scaleLinear().domain([0, d3.max(data, function(d) {return d[0];})]).range([25, 1280]);
-var yPlace = d3.scaleLinear().domain([0, d3.max(data, function(d) {return d[1];})]).range([695, 0]);
+var xPlace = d3.scaleLinear().domain([1860, 2018]).range([45, 1280]);
+var yPlace = d3.scaleLinear().domain([-0.5, 1]).range([695, 0]);
 
 var pStatus = document.getElementById("c-select");
 
@@ -31,7 +34,7 @@ var circles = svg.selectAll("circle")
     .attr("r", 16)
     .attr("fill", "black")
     .on("mouseover",  function(d) {
-        var info = "Wind speed: " + d[1] + " m/s | Wave height: " + d[0] + " m";
+        var info = "Average Change: " + d[1] + " degrees Celcius | Year: " + d[0];
         console.log(info);
         pStatus.innerHTML = info;
         d3.select(this).attr("fill", "#00aeef");
@@ -40,8 +43,8 @@ var circles = svg.selectAll("circle")
         d3.select(this).attr("fill", "black");
     });
 
-    var xAxis = d3.axisBottom().scale(xPlace);
-    var yAxis = d3.axisLeft().scale(yPlace);
+var xAxis = d3.axisBottom().scale(xPlace);
+var yAxis = d3.axisLeft().scale(yPlace);
 
-    var xAxisGroup = svg.append("g").call(xAxis).attr("transform", "translate(0," + 695 +")");
-    var yAxisGroup = svg.append("g").call(yAxis).attr("transform", "translate(25, 0)");
+var xAxisGroup = svg.append("g").call(xAxis).attr("transform", "translate(0," + 695 +")");
+var yAxisGroup = svg.append("g").call(yAxis).attr("transform", "translate(45, 0)");
