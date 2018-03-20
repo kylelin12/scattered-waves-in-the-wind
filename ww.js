@@ -34,7 +34,7 @@ var circles = svg.selectAll("circle")
     .attr("r", 16)
     .attr("fill", "black")
     .on("mouseover",  function(d) {
-        var info = "Average Change: " + d[1] + " degrees Celcius | Year: " + d[0];
+        var info = "Average Change: " + d[1] + " degrees Celcius<br>Year: " + d[0];
         console.log(info);
         pStatus.innerHTML = info;
         d3.select(this).attr("fill", "#00aeef");
