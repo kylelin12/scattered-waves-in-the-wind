@@ -16,8 +16,8 @@ var svg = body.append("svg")
     .style("border-style","solid")
     .style("border-width","5px");
 
-var xPlace = d3.scaleLinear().domain([1860, 2018]).range([45, 1280]);
-var yPlace = d3.scaleLinear().domain([-0.5, 1]).range([695, 0]);
+var xPlace = d3.scaleLinear().domain([1860, 2018]).range([90, 1280]);
+var yPlace = d3.scaleLinear().domain([-0.5, 1]).range([655, 0]);
 
 var pStatus = document.getElementById("c-select");
 
@@ -46,5 +46,20 @@ var circles = svg.selectAll("circle")
 var xAxis = d3.axisBottom().scale(xPlace);
 var yAxis = d3.axisLeft().scale(yPlace);
 
-var xAxisGroup = svg.append("g").call(xAxis).attr("transform", "translate(0," + 695 +")");
-var yAxisGroup = svg.append("g").call(yAxis).attr("transform", "translate(45, 0)");
+var xAxisGroup = svg.append("g").call(xAxis).attr("transform", "translate(0," + 655 +")").append("text")
+.attr("class", "axis-title")
+.attr("transform", "translate(700, 25)")
+.attr("y", 6)
+.attr("dy", ".71em")
+.style("text-anchor", "end")
+.attr("fill", "#5D6971")
+.text("Year");
+
+var yAxisGroup = svg.append("g").call(yAxis).attr("transform", "translate(90, 0)").append("text")
+.attr("class", "axis-title")
+.attr("transform", "rotate(-90), translate(-320, -50)")
+.attr("y", 6)
+.attr("dy", ".71em")
+.style("text-anchor", "end")
+.attr("fill", "#5D6971")
+.text("Average Change");
